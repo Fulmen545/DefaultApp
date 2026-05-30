@@ -2,7 +2,13 @@ package com.riso.defalutapp.startup
 
 import android.content.Context
 import androidx.startup.Initializer
+import com.riso.defalutapp.di.apiModule
 import com.riso.defalutapp.di.applicationModule
+import com.riso.defalutapp.di.domainModule
+import com.riso.defalutapp.di.frameworkModule
+import com.riso.defalutapp.di.getNetworkModule
+import com.riso.defalutapp.di.repositoryModule
+import com.riso.defalutapp.di.serializationModule
 import com.riso.defalutapp.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.KoinApplication
@@ -13,11 +19,16 @@ class KoinInitializer : Initializer<KoinApplication> {
     override fun create(context: Context): KoinApplication {
         return startKoin {
 
-
             androidContext(context.applicationContext)
             modules(
                 viewModelModule,
-                applicationModule
+                applicationModule,
+                getNetworkModule(debug = true),
+                frameworkModule,
+                repositoryModule,
+                domainModule,
+                apiModule,
+                serializationModule
             )
         }
     }

@@ -8,6 +8,7 @@ val viewModelModule = module {
 
     viewModel {
         SplashViewModel(
+            loadImageListUseCase = get(),
             failureFormatter = get(),
         )
     }

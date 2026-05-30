@@ -14,6 +14,7 @@ class SplashFragment : BaseComposeFragment() {
     @Composable
     override fun SetContent() {
         SplashScreen(
+            state = viewModel.viewState.value,
             effectFlow = viewModel.effect,
             onNavigationEffect = ::onNavigationEvent,
         )

@@ -45,6 +45,8 @@ android {
 
 dependencies {
     implementation(project(":core"))
+    implementation(project(":domain"))
+    implementation(project(":data"))
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -53,6 +55,7 @@ dependencies {
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
+    implementation(libs.coil.compose)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.androidx.fragment.ktx)
@@ -61,8 +64,12 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.lifecycle.extension)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.kotlin.coroutines.android)
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+    testApi(libs.kotlin.coroutines.test)
 
-    api(libs.koin.android)
+
+
     implementation(libs.koin.compose)
 
     api(libs.timber)
