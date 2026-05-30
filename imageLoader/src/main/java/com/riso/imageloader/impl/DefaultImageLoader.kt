@@ -4,6 +4,8 @@ import android.util.Log
 import android.widget.ImageView
 import androidx.annotation.DrawableRes
 import com.riso.imageloader.api.ImageLoader
+import com.riso.imageloader.api.OnErrorCallback
+import com.riso.imageloader.api.OnSuccessCallback
 import com.riso.imageloader.cache.CacheInvalidator
 import com.riso.imageloader.cache.DiskImageCache
 import com.riso.imageloader.cache.MemoryImageCache
@@ -41,7 +43,6 @@ class DefaultImageLoader(
                     target.setImageBitmap(bitmap)
                 }
             } catch (t: Throwable) {
-                // Placeholder ostava, appka nespadne
                 Log.w("ImageLoader", "Image load failed for $url: ${t.message}", t)
             }
         }
@@ -54,6 +55,35 @@ class DefaultImageLoader(
 
     override suspend fun clearAll() {
         withContext(Dispatchers.IO) { cacheInvalidator.clearAll() }
+    }
+
+    override fun preloadAsync(
+        url: String,
+        onSuccess: OnSuccessCallback,
+        onError: OnErrorCallback
+    ) {
+        scope.launch {
+            try {
+                preload(url)
+                onSuccess.onSuccess()
+            } catch (t: Throwable) {
+                onError.onError(t)
+            }
+        }
+    }
+
+    override fun clearAllAsync(
+        onSuccess: OnSuccessCallback,
+        onError: OnErrorCallback
+    ) {
+        scope.launch {
+            try {
+                clearAll()
+                onSuccess.onSuccess()
+            } catch (t: Throwable) {
+                onError.onError(t)
+            }
+        }
     }
 
     private suspend fun resolveBitmap(url: String, key: String) = withContext(Dispatchers.IO) {
