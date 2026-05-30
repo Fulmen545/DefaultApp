@@ -5,6 +5,7 @@ plugins {
 
 dependencies {
     implementation(project(":core"))
+    implementation(project(":imageLoader"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

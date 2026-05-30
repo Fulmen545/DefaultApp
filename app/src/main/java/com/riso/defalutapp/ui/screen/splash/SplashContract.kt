@@ -19,7 +19,10 @@ class SplashContract {
         }
     }
 
-    sealed class Event : ViewEvent
+    sealed class Event : ViewEvent {
+        object InvalidateCaches : Event()
+        object Reload : Event()
+    }
 
     sealed class Effect : ViewSideEffect {
         data class Error(val error: String) : Effect()

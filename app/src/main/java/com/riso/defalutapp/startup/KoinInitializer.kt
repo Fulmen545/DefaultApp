@@ -10,6 +10,7 @@ import com.riso.defalutapp.di.getNetworkModule
 import com.riso.defalutapp.di.repositoryModule
 import com.riso.defalutapp.di.serializationModule
 import com.riso.defalutapp.di.viewModelModule
+import com.riso.imageloader.di.imageLoaderModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.KoinApplication
 import org.koin.core.context.startKoin
@@ -28,7 +29,8 @@ class KoinInitializer : Initializer<KoinApplication> {
                 repositoryModule,
                 domainModule,
                 apiModule,
-                serializationModule
+                serializationModule,
+                imageLoaderModule
             )
         }
     }

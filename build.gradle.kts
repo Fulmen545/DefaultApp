@@ -10,6 +10,7 @@ buildscript {
 
     dependencies {
         classpath(libs.androidx.navigation.safeargs.gradleplugin)
+        classpath(libs.kotlin.gradle.plugin)
 
         //        classpath(Dependencies.Plugins.gradleToolsPlugin)
 //        classpath(Dependencies.Plugins.firebasePlugin)

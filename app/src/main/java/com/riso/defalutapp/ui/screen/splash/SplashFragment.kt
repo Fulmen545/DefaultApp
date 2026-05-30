@@ -16,6 +16,7 @@ class SplashFragment : BaseComposeFragment() {
         SplashScreen(
             state = viewModel.viewState.value,
             effectFlow = viewModel.effect,
+            onEventSent = { viewModel.setEvent(it)},
             onNavigationEffect = ::onNavigationEvent,
         )
     }
