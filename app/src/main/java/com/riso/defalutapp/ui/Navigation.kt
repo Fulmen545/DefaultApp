@@ -9,7 +9,7 @@ import com.riso.defalutapp.utils.ScreenAnim
 import java.security.InvalidParameterException
 
 sealed class Screen {
-    object Splash : Screen()
+    object CarList : Screen()
     object Back : Screen()
 }
 
@@ -18,11 +18,12 @@ fun Fragment.navigate(to: Screen, from: Screen) {
         throw InvalidParameterException("Can't navigate to $to")
     }
     when (to) {
-        Screen.Splash -> {
-            navigateWithAnimation(resId = R.id.splash_fragment)
-        }
         Screen.Back -> {
             activity?.onBackPressedDispatcher?.onBackPressed()
+        }
+
+        Screen.CarList -> {
+            navigateWithAnimation(resId = R.id.car_list_fragment)
         }
     }
 }

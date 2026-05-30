@@ -6,9 +6,9 @@ import com.riso.core.Result
 import com.riso.core.FailureFormatter
 import kotlinx.coroutines.launch
 
-abstract class BaseErrorViewModel<Event, UiState, Effect>(
+abstract class StateFlowBaseErrorViewModel<Event, UiState, Effect>(
     protected val failureFormatter: FailureFormatter
-) : BaseViewModel<Event, UiState, Effect>() where Event : ViewEvent, UiState : LoadingState<UiState>, Effect : ViewSideEffect {
+) : StateFlowBaseViewModel<Event, UiState, Effect>() where Event : ViewEvent, UiState : LoadingState<UiState>, Effect : ViewSideEffect {
 
     abstract fun getErrorSideEffect(errorMessage: String): Effect
 

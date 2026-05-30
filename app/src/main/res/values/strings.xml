@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Rounds Assignment</string>
+    <string name="invalidate_caches">Invalidate Caches</string>
 </resources>

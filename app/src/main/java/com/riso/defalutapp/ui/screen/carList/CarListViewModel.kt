@@ -1,22 +1,21 @@
-package com.riso.defalutapp.ui.screen.splash
+package com.riso.defalutapp.ui.screen.carList
 
 import androidx.lifecycle.viewModelScope
 import com.riso.core.FailureFormatter
-import com.riso.core.base.BaseErrorViewModel
-import com.riso.defalutapp.ui.screen.splash.SplashContract.Effect
-import com.riso.defalutapp.ui.screen.splash.SplashContract.Event
-import com.riso.defalutapp.ui.screen.splash.SplashContract.State
+import com.riso.core.base.StateFlowBaseErrorViewModel
+import com.riso.defalutapp.ui.screen.carList.CarListContract.Effect
+import com.riso.defalutapp.ui.screen.carList.CarListContract.Event
+import com.riso.defalutapp.ui.screen.carList.CarListContract.State
 import com.riso.domain.usecase.InvalidateCachesUseCase
 import com.riso.domain.usecase.LoadImageListUseCase
-import com.riso.imageloader.api.ImageLoader
 import kotlinx.coroutines.launch
 
-class SplashViewModel(
+class CarListViewModel(
     private val loadImageListUseCase: LoadImageListUseCase,
     private val invalidateCachesUseCase: InvalidateCachesUseCase,
     failureFormatter: FailureFormatter
 
-) : BaseErrorViewModel<Event, State, Effect>(
+) : StateFlowBaseErrorViewModel<Event, State, Effect>(
     failureFormatter = failureFormatter
 ) {
 

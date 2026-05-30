@@ -1,4 +1,4 @@
-package com.riso.defalutapp.ui.screen.splash
+package com.riso.defalutapp.ui.screen.carList
 
 import com.riso.core.base.LoadingState
 import com.riso.core.base.ViewEvent
@@ -7,7 +7,7 @@ import com.riso.core.base.ViewState
 import com.riso.defalutapp.ui.Screen
 import com.riso.domain.model.ImageDataModel
 
-class SplashContract {
+class CarListContract {
 
     data class State(
         override val isLoading: Boolean = false,

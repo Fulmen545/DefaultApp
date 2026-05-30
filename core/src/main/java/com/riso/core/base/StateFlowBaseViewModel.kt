@@ -8,17 +8,20 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 
-abstract class BaseViewModel<Event : ViewEvent, UiState : ViewState, Effect : ViewSideEffect> :
+abstract class StateFlowBaseViewModel<Event : ViewEvent, UiState : ViewState, Effect : ViewSideEffect> :
     ViewModel() {
 
     private val initialState: UiState by lazy { setInitialState() }
     abstract fun setInitialState(): UiState
 
-    private val _viewState: MutableState<UiState> by lazy { mutableStateOf(initialState) }
-    val viewState: State<UiState> by lazy { _viewState }
+    private val _viewState: MutableStateFlow<UiState> by lazy { MutableStateFlow(initialState) }
+    val viewState: StateFlow<UiState> by lazy { _viewState.asStateFlow() }
 
     private val _event: MutableSharedFlow<Event> = MutableSharedFlow()
 
@@ -34,8 +37,7 @@ abstract class BaseViewModel<Event : ViewEvent, UiState : ViewState, Effect : Vi
     }
 
     fun setState(reducer: UiState.() -> UiState) {
-        val newState = viewState.value.reducer()
-        _viewState.value = newState
+        _viewState.value = _viewState.value.reducer()
     }
 
     fun setEffect(builder: () -> Effect) {

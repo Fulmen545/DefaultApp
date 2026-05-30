@@ -2,24 +2,12 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/navigation_graph"
-    app:startDestination="@id/splash_fragment"
+    app:startDestination="@id/car_list_fragment"
     >
 
     <fragment
-        android:id="@+id/splash_fragment"
-        android:name="com.riso.defalutapp.ui.screen.splash.SplashFragment"
-        />
+        android:id="@+id/car_list_fragment"
+        android:name="com.riso.defalutapp.ui.screen.carList.CarListFragment" />
 
-<!--    <fragment-->
-<!--        android:id="@+id/login_fragment"-->
-<!--        android:name="com.asseco.ce.parking.ui.login.LoginFragment" />-->
-
-<!--    <fragment-->
-<!--        android:id="@+id/main_fragment"-->
-<!--        android:name="com.asseco.ce.parking.ui.main.MainFragment"/>-->
-
-<!--    <fragment-->
-<!--        android:id="@+id/statistics_fragment"-->
-<!--        android:name="com.asseco.ce.parking.ui.statistics.StatisticsFragment"/>-->
 
 </navigation>
