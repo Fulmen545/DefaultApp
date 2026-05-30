@@ -14,7 +14,6 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-    api(libs.koin.android)
     api(libs.squareup.okhttp)
     api(libs.squareup.okhttp.logging.interceptor)
     api(libs.squareup.converter.moshi)
