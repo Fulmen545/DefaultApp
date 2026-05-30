@@ -59,7 +59,8 @@ fun SplashScreen(
     ) {
         if (state.images.isEmpty()) {
             Image(
-                painter = painterResource(R.drawable.asseco_logo),
+                painter = painterResource(R.drawable.ic_launcher_foreground),
+                modifier = Modifier.size(512.dp),
                 contentDescription = null,
                 contentScale = ContentScale.FillWidth
             )
@@ -85,6 +86,10 @@ fun SplashScreen(
 @Composable
 fun SplashPreview() {
     DefalutAppTheme {
-//        SplashScreen(null) { }
+        SplashScreen(
+            state = SplashContract.State(),
+            effectFlow = null,
+            onNavigationEffect = {}
+        )
     }
 }
